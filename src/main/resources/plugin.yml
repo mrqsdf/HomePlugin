@@ -1,0 +1,37 @@
+name: HomePlugin
+main: fr.mrqsdf.homeplugin.HomePlugin
+version: 1.0
+author: mrqsdf
+api-version: 1.20
+commands:
+  home:
+    default: true
+    description: Commande pour se téléporter a sa maison
+  sethome:
+    default: true
+    description: Commande pour définir sa maison
+  delhome:
+    default: true
+    description: Commande pour supprimer sa maison
+  listhome:
+    default: true
+    description: Commande pour lister ses maisons
+  homeadmin:
+    description: Commande pour se téléporter a la maison d'un joueur
+    permission: home.admin
+    permission-message: §4Vous n'avez pas la permission de faire cette commande.
+  sethomeadmin:
+    description: Commande pour définir la maison d'un joueur
+    permission: home.admin
+    permission-message: §4Vous n'avez pas la permission de faire cette commande.
+  delhomeadmin:
+    description: Commande pour supprimer la maison d'un joueur
+    permission: home.admin
+    permission-message: §4Vous n'avez pas la permission de faire cette commande.
+permissions:
+    home.user:
+        description: permissions user
+        default: true
+    home.admin:
+        description: permissions admin
+        default: op
