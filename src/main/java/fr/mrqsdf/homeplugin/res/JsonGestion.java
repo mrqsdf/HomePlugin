@@ -50,7 +50,6 @@ public class JsonGestion {
             Object o = JsonParser.parseReader(fileReader);
             JsonObject jsonObject = (JsonObject) o;
             String json = jsonObject.toString();
-            System.out.println(json);
             Type empMapType = new TypeToken<Map<UUID, List<Home>>>() {}.getType();
             PlayerData.playerHomes = gson.fromJson(json, empMapType);
         } catch (Exception e){

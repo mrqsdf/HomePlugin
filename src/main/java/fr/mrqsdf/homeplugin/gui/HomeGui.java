@@ -27,34 +27,20 @@ public class HomeGui implements Listener {
         List<Home> homes = PlayerData.playerHomes.get(player.getUniqueId());
         int length = homes.size();
         int index = 0;
-        for (int i = 10; i < 44; i++){
-            if (index == length){
-                break;
-            }
-            if (!(i % 9 == 0 || i % 9 == 8)){
-                ItemStack item = new ItemStack(Material.ACACIA_SIGN);
-                ItemMeta itemMeta = item.getItemMeta();
-                Home home = homes.get(index);
-                itemMeta.setDisplayName(home.name);
-                List<String> lore = new ArrayList<>();
-                itemMeta.getPersistentDataContainer().set(new NamespacedKey(HomePlugin.instance, "home"), new HomeDataType(), home);
-                lore.add("X: " + home.x);
-                lore.add("Y: " + home.y);
-                lore.add("Z: " + home.z);
-                lore.add("World: " + home.world);
-                itemMeta.setLore(lore);
-                item.setItemMeta(itemMeta);
-                gui.setItem(i, item);
-                index++;
-            }
-        }
-        player.openInventory(gui);
+        setGui(player, gui, homes, length, index);
     }
     public static void openGui(Player player, Player target){
         Inventory gui = player.getServer().createInventory(null, 54, GuiData.homeGuiName + target.getName());
         List<Home> homes = PlayerData.playerHomes.get(target.getUniqueId());
         int length = homes.size();
         int index = 0;
+        for (int value : GuiData.homeItems.keySet()){
+            gui.setItem(value, GuiData.homeItems.get(value));
+        }
+        setGui(player, gui, homes, length, index);
+    }
+
+    private static void setGui(Player player, Inventory gui, List<Home> homes, int length, int index) {
         for (int i = 10; i < 44; i++){
             if (index == length){
                 break;

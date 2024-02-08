@@ -14,7 +14,6 @@ public class SetHomeCommand implements CommandExecutor {
         if (commandSender instanceof Player player){
             if (strings.length == 1){
                 String name = strings[0];
-                new Home(name,player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), player.getLocation().getWorld().getName(), player.getUniqueId().toString());
                 PlayerData.playerHomes.get(player.getUniqueId()).add(new Home(name,player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), player.getLocation().getWorld().getName(), player.getUniqueId().toString()));
                 return true;
             } else {
